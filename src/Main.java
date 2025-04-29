@@ -1,0 +1,70 @@
+import java.lang.reflect.Array;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        comparators();
+    }
+
+    public static void comparators(){
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(5);
+        numbers.add(43);
+        numbers.add(3);
+        numbers.add(6);
+        numbers.add(18);
+
+        System.out.println("Original: " + numbers);
+
+        Collections.sort(numbers);
+        System.out.println("Natural ordem: " + numbers);
+
+        Collections.sort(numbers, Comparator.naturalOrder());
+        System.out.println("Usando Comparator explícito: " + numbers);
+
+        Collections.sort(numbers, Comparator.reverseOrder());
+        System.out.println("Usando ReverseOrder: " + numbers);
+
+        numbers.sort((n1,n2) -> n1.compareTo(n2));
+        System.out.println("Usando lambda: " + numbers);
+
+
+        numbers.sort(Comparator.comparing(n -> Math.abs(n - 10)));
+        System.out.println("Maior proximidade com 10: " + numbers);
+
+        numbers.sort((n1,n2) -> Integer.compare(n1,n2));
+        System.out.println("Integer compare: " + numbers);
+
+        numbers.sort((n1, n2) -> {
+
+            int paridade1 = n1 % 2;  // 0 se par, 1 se ímpar
+            int paridade2 = n2 % 2;
+
+            if (paridade1 != paridade2) {
+                return paridade1 - paridade2;  //0 e 1 por exemplo, vai retornar -2
+            }
+
+            // Se ambos têm a mesma paridade, ordenamos normalmente
+            return n1.compareTo(n2);
+        });
+
+        System.out.println("Pares primeiro: " + numbers);
+
+
+    }
+    public static void comparatorsObjects(){
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Carlos", 25, 1.78, "São Paulo"));
+        pessoas.add(new Pessoa("Ana", 32, 1.65, "Rio de Janeiro"));
+        pessoas.add(new Pessoa("Pedro", 18, 1.82, "Belo Horizonte"));
+        pessoas.add(new Pessoa("Mariana", 29, 1.70, "Brasília"));
+        pessoas.add(new Pessoa("Bruno", 22, 1.75, "São Paulo"));
+        pessoas.add(new Pessoa("Lúcia", 35, 1.68, "Curitiba"));
+
+        //Ordenar por nome
+        pessoas.sort((p1, p2) -> p1.getNome().compareTo(p2.getNome()));
+        System.out.println();
+    }
+}
