@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        comparators();
+        comparatorsObjects();
     }
 
     public static void comparators(){
@@ -64,7 +64,27 @@ public class Main {
         pessoas.add(new Pessoa("Lúcia", 35, 1.68, "Curitiba"));
 
         //Ordenar por nome
-        pessoas.sort((p1, p2) -> p1.getNome().compareTo(p2.getNome()));
-        System.out.println();
+        pessoas.sort(Comparator.comparing(Pessoa::getNome));
+        System.out.println("Ordernar por nome: \n" + pessoas);
+
+        System.out.println("===============");
+
+        pessoas.sort(Comparator.comparingInt(Pessoa::getIdade));
+        System.out.println("Ordernar por idade: \n" + pessoas);
+
+        pessoas.sort(Comparator.comparingDouble(Pessoa::getAltura));
+        System.out.println("Ordernar por altura: \n" + pessoas);
+
+        //reverse order
+
+        pessoas.sort(Comparator.comparingInt(Pessoa::getIdade).reversed());
+        //basta adicionar o reverse no final
+        System.out.println("Ordernar por idade reverso: \n" + pessoas);
+
+        pessoas.sort(Comparator.comparing(Pessoa::getCidade));
+        System.out.println("Ordernar cidade ordem alfabetica: \n" + pessoas);
+
+
+
     }
 }
