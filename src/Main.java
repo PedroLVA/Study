@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        comparatorsObjects();
+        comparatorString();
     }
 
     public static void comparators(){
@@ -86,6 +86,38 @@ public class Main {
 
         pessoas.sort(Comparator.comparing(Pessoa::getIdade).reversed());
         System.out.println("Idade reversed: \n" + pessoas);
+
+
+
+    }
+
+    public static void comparatorString(){
+        List<String> strings = new ArrayList<>();
+
+        strings.add("1001");
+        strings.add("11");
+        strings.add("10");
+        strings.add("6");
+        strings.add("3");
+        strings.add("2");
+        strings.add("1");
+        strings.add("1002");
+
+        System.out.println("Lista não ordenada: "+  strings);
+        strings.sort((s1, s2 ) ->{
+            //10
+            //10
+            //2 - 3
+
+            if(s1.length() != s2.length()){
+                return s1.length() - s2.length();
+            }
+            return s1.compareTo(s2);
+            //1 - 1
+            //0 - 2
+        });
+
+        System.out.println("Lista ordenada: "+  strings);
 
 
 
