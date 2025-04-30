@@ -84,6 +84,9 @@ public class Main {
         pessoas.sort(Comparator.comparing(Pessoa::getCidade));
         System.out.println("Ordernar cidade ordem alfabetica: \n" + pessoas);
 
+        pessoas.sort(Comparator.comparing(Pessoa::getIdade).reversed());
+        System.out.println("Idade reversed: \n" + pessoas);
+
 
 
     }
