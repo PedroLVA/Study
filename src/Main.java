@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
 
         comparators();
+
     }
 
     public static void comparators(){
@@ -36,7 +37,8 @@ public class Main {
         numbers.sort(Comparator.comparing(n -> Math.abs(n - 10)));
         System.out.println("Maior proximidade com 10: " + numbers);
 
-        numbers.sort((n1,n2) -> Integer.compare(n1,n2));
+        numbers.sort(Integer::compare);
+        numbers.sort(Integer::compare);
         System.out.println("Integer compare: " + numbers);
 
 
@@ -78,6 +80,11 @@ public class Main {
         pessoas.add(new Pessoa("Mariana", 29, 1.70, "Brasília"));
         pessoas.add(new Pessoa("Bruno", 22, 1.75, "São Paulo"));
         pessoas.add(new Pessoa("Lúcia", 35, 1.68, "Curitiba"));
+
+        Checker checker = new Checker();
+
+        // Sort the list using your comparator
+        pessoas.sort(checker);
 
         //Ordenar por nome
         pessoas.sort(Comparator.comparing(Pessoa::getNome));

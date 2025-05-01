@@ -12,7 +12,7 @@ class Pessoa {
         this.cidade = cidade;
     }
 
-    // Getters
+    // getNome
     public String getNome() {
         return nome;
     }
