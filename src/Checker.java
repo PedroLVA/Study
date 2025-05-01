@@ -12,3 +12,5 @@ public class Checker implements Comparator<Pessoa>{
         return o1.getNome().compareTo(o2.getNome());
     }
 }
+
+

@@ -4,8 +4,10 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
+        String str = "aaaaabaassdwwsdw";
+        System.out.println(contarCadaLetra(str));
 
-        comparatorsObjects();
+
 
     }
 
@@ -69,6 +71,8 @@ public class Main {
         int resultado = cat1.compareTo(cat2);
 
         System.out.println("Resultado compareTo: " + resultado);
+
+
 
 
     }
@@ -146,4 +150,29 @@ public class Main {
 
 
     }
+    public static int contarLetra(String str, char letter){
+
+        int countLetter = 0;
+
+        for(Character c : str.toCharArray()){
+           if(c.equals(letter)){
+               countLetter++;
+           }
+        }
+
+        return countLetter;
+    }
+
+    public static HashMap<Character, Integer> contarCadaLetra(String str){
+
+        HashMap<Character, Integer> frequencyHashmap = new HashMap<>();
+
+        for(Character c : str.toCharArray()){
+            frequencyHashmap.put(c, frequencyHashmap.getOrDefault(c, 0) +1);
+        }
+
+        return frequencyHashmap;
+    }
+
+
 }
