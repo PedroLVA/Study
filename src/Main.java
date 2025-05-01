@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
-        comparators();
+        comparatorsObjects();
 
     }
 
@@ -74,7 +74,7 @@ public class Main {
     }
     public static void comparatorsObjects(){
         List<Pessoa> pessoas = new ArrayList<>();
-        pessoas.add(new Pessoa("Carlos", 25, 1.78, "São Paulo"));
+        pessoas.add(new Pessoa("Abe", 32, 1.78, "São Paulo"));
         pessoas.add(new Pessoa("Ana", 32, 1.65, "Rio de Janeiro"));
         pessoas.add(new Pessoa("Pedro", 18, 1.82, "Belo Horizonte"));
         pessoas.add(new Pessoa("Mariana", 29, 1.70, "Brasília"));
@@ -85,6 +85,7 @@ public class Main {
 
         // Sort the list using your comparator
         pessoas.sort(checker);
+        System.out.println("Ordenado por classe checker: \n" + pessoas);
 
         //Ordenar por nome
         pessoas.sort(Comparator.comparing(Pessoa::getNome));
