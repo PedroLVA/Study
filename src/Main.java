@@ -1,10 +1,11 @@
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
 
-        comparatorString();
+        comparators();
     }
 
     public static void comparators(){
@@ -31,11 +32,13 @@ public class Main {
         System.out.println("Usando lambda: " + numbers);
 
 
+        numbers.sort(Comparator.nullsFirst(Comparator.naturalOrder()));
         numbers.sort(Comparator.comparing(n -> Math.abs(n - 10)));
         System.out.println("Maior proximidade com 10: " + numbers);
 
         numbers.sort((n1,n2) -> Integer.compare(n1,n2));
         System.out.println("Integer compare: " + numbers);
+
 
         numbers.sort((n1, n2) -> {
 
@@ -51,6 +54,19 @@ public class Main {
         });
 
         System.out.println("Pares primeiro: " + numbers);
+
+        //create a new ordened list based on an unordered list
+
+        List<Integer> orderedList = numbers.stream().sorted(Comparator.nullsFirst(Comparator.comparing(Integer::intValue))).toList();
+
+        System.out.println("Ordered list, another variable created via toList: " + orderedList);
+
+        String cat1 = "Z";
+        String cat2 = "B";
+
+        int resultado = cat1.compareTo(cat2);
+
+        System.out.println("Resultado compareTo: " + resultado);
 
 
     }
@@ -90,7 +106,6 @@ public class Main {
 
 
     }
-
     public static void comparatorString(){
         List<String> strings = new ArrayList<>();
 
@@ -112,6 +127,7 @@ public class Main {
             if(s1.length() != s2.length()){
                 return s1.length() - s2.length();
             }
+
             return s1.compareTo(s2);
             //1 - 1
             //0 - 2
