@@ -4,8 +4,8 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-        String str = "aaaaabaassdwwsdw";
-        System.out.println(contarCadaLetra(str));
+
+        comparatorString();
 
 
 
@@ -147,6 +147,10 @@ public class Main {
 
         System.out.println("Lista ordenada: "+  strings);
 
+        var orderedList = strings.stream().sorted(Comparator.nullsFirst(Comparator.naturalOrder())).toList();
+
+        System.out.println(orderedList);
+
 
 
     }
@@ -172,6 +176,25 @@ public class Main {
         }
 
         return frequencyHashmap;
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> hashmap = new HashMap<>();
+        int[] result = new int[2];
+
+        for(int i = 0; i< nums.length; i++){
+            int currentNum = nums[i];
+
+            if(hashmap.containsKey(currentNum)){
+                result[0] = hashmap.get(currentNum);
+                result[1] = i;
+                break;
+            }
+            //
+            hashmap.put(target-nums[i], i);
+        }
+
+        return result;
     }
 
 
