@@ -43,6 +43,19 @@ public class Main {
         numbers.sort(Integer::compare);
         System.out.println("Integer compare: " + numbers);
 
+        numbers.sort(Comparator.nullsFirst(Comparator.comparingInt(Integer::intValue)));
+
+        //to create a new object
+
+        var newList = numbers.stream().sorted(Comparator.comparing(Integer::intValue)).toList();
+
+        //natural
+        numbers.sort(Comparator.naturalOrder());
+        //reverse
+        //can always wrap it with nullsfirst
+        numbers.sort(Comparator.nullsFirst(Comparator.reverseOrder()));
+
+
 
         numbers.sort((n1, n2) -> {
 
