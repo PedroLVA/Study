@@ -62,5 +62,31 @@ public class StreamPractice {
         System.out.println("<NAME> is from <COUNTRY>" +
                 people.stream().map(person -> person.getName() + " is from " + person.getCountry() ).toList());
 
+        System.out.println("\n*************************\n");
+
+        //comparator
+        var byAge = people.stream().sorted(Comparator.comparingInt(Person::getAge)).toList();
+        System.out.println("Sort by age: " + byAge);
+
+        var byCountryAndAge = people.stream().sorted(Comparator.comparing(Person::getCountry).thenComparingInt(Person::getAge)).toList();
+        System.out.println("Sort by age and country: " + byCountryAndAge);
+
+        var byCountryAndAge2 = people.stream().sorted(Comparator.comparingInt((Person p) -> p.getName().length()).thenComparing(Person::getName)).toList();
+        System.out.println("Sort by age and country: " + byCountryAndAge);
+
+        var byNameLength = people.stream().sorted((o1, o2) -> {
+          int length1 = o1.getName().length();
+          int length2 = o2.getName().length();
+
+          if(length1 != length2){
+              return length1 - length2;
+          }
+          return 0;
+
+        }).toList();
+
+        System.out.println("Sort by name length: " + byNameLength);
+
+
     }
 }
