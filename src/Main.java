@@ -5,10 +5,7 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
 
-        comparatorString();
-
-
-
+        comparators();
     }
 
     public static void comparators(){
@@ -84,6 +81,10 @@ public class Main {
         int resultado = cat1.compareTo(cat2);
 
         System.out.println("Resultado compareTo: " + resultado);
+
+        var onlyEvenNumbers = numbers.stream().filter(n -> n % 2 == 0).toList();
+
+        System.out.println("Only even: " + onlyEvenNumbers);
 
 
 
