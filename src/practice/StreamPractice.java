@@ -87,6 +87,27 @@ public class StreamPractice {
 
         System.out.println("Sort by name length: " + byNameLength);
 
+        System.out.println("\n*************************\n");
+
+        var listOfNamesUppercaseFromNonUSA = people.stream()
+                .filter(p -> !p.getCountry().equals("USA"))
+                .map(person -> person.getName().toUpperCase())
+                .toList();
+
+        System.out.println("listOfNamesUppercaseFromNonUSA: " + listOfNamesUppercaseFromNonUSA);
+
+        var sortByCountryNameLengthThenReverseName = people.stream()
+                .sorted(Comparator
+                        .comparingInt((Person p) -> p.getCountry().length())
+                        .thenComparing(Comparator.comparing(Person::getName).reversed())
+                )
+                .toList();
+
+        System.out.println("sortByCountryNameReverAlphabeical: " + sortByCountryNameLengthThenReverseName);
+
+
+        var oldestPersonCanada = people.stream().filter(person -> "Canada".equals(person.getCountry())).max(Comparator.comparingInt(Person::getAge)).orElse(null);
+        System.out.println("oldestPersonCanada: " + oldestPersonCanada);
 
     }
 }
