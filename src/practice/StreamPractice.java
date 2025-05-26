@@ -90,9 +90,11 @@ public class StreamPractice {
         System.out.println("\n*************************\n");
 
         var listOfNamesUppercaseFromNonUSA = people.stream()
-                .filter(p -> !p.getCountry().equals("USA"))
+                .filter(p -> !"USA".equals(p.getCountry())) //prevents null values
                 .map(person -> person.getName().toUpperCase())
                 .toList();
+
+
 
         System.out.println("listOfNamesUppercaseFromNonUSA: " + listOfNamesUppercaseFromNonUSA);
 
@@ -106,8 +108,16 @@ public class StreamPractice {
         System.out.println("sortByCountryNameReverAlphabeical: " + sortByCountryNameLengthThenReverseName);
 
 
+
+
         var oldestPersonCanada = people.stream().filter(person -> "Canada".equals(person.getCountry())).max(Comparator.comparingInt(Person::getAge)).orElse(null);
         System.out.println("oldestPersonCanada: " + oldestPersonCanada);
+
+        var newSortedList = people.stream().sorted(Comparator.nullsFirst(Comparator.comparingInt(Person::getAge))).toList(); //nullFirst comparing by age
+
+        var ageSorted = people.stream().sorted(Comparator.comparing(Person::getCountry)).toList();
+
+        System.out.println("Null First By Age: " + newSortedList);
 
     }
 }
