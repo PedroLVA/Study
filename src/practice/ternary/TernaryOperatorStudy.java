@@ -96,12 +96,6 @@ public class TernaryOperatorStudy {
         System.out.println("objValue: " + objValue + " (Type: " + objValue.getClass().getSimpleName() + ")");
 
 
-        System.out.println("\n--- How to Study with this Class ---");
-        System.out.println("1. Read through each example and the comments.");
-        System.out.println("2. Modify the values of variables (score, age, num1, num2, marks, level, number) and observe the output changes.");
-        System.out.println("3. Try to rewrite some of the ternary operations using if-else statements and vice-versa.");
-        System.out.println("4. Experiment with different data types for the expressions in the ternary operator.");
-        System.out.println("5. Pay attention to the readability, especially with nested ternaries.");
-        System.out.println("6. Uncomment the line that causes a compile error to see type compatibility issues in action.");
+
     }
 }
