@@ -87,5 +87,23 @@ public class DateTimeExplorer {
 
         DateTimeFormatter fullFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy 'at' HH:mm:ss z");
         System.out.println("Formatted Tokyo time: " + tokyoTime.format(fullFormatter));
+
+        //problems
+        //my age in days
+
+        LocalDate myDateOfBirth = LocalDate.of(2003, 8, 21);
+        LocalDate currentTime = LocalDate.now();
+
+        long daysThatPasse = ChronoUnit.DAYS.between(myDateOfBirth, currentTime);
+        long weeksThatPasse = ChronoUnit.WEEKS.between(myDateOfBirth, currentTime);
+
+
+        System.out.println("Days since I was born: "+ daysThatPasse);
+        System.out.println("Days since I was born: "+ weeksThatPasse);
+
+
+
+
+
     }
 }
